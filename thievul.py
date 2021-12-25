@@ -5,6 +5,10 @@ import re
 
 from names import en
 
+def name2dexNum(name):
+  dexNum = en.index(name.capitalize()) + 1
+  return dexNum
+
 def snip(s):
   found = re.search('">(.+?)</', s).group(1)
   return found
@@ -41,7 +45,7 @@ class pokemon:
       pkstr += "\n"+"Type(s): "+self.type1+", "+self.type2
     return pkstr
 
-def getInfo(dexNumber):
+def getInfo(dexNumber,redactNames=False):
   name = en[dexNumber-1]
   dexNum = dexNumber
   # url for pokemon
@@ -98,6 +102,11 @@ def getInfo(dexNumber):
 
   if type2 == type1:
     type2 = "\0"
+
+  # redact names
+  if redactNames == True:
+    descriptionX = descriptionX.replace(name,"\u2588"*len(name))
+    descriptionY = descriptionY.replace(name,"\u2588"*len(name))
 
   # use info to create pokemon
   newPKMN = pokemon(name, dexNum,descriptionX,descriptionY,height,weight,category,type1,type2)

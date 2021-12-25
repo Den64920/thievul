@@ -5,7 +5,10 @@ import replit, time
 
 """
 DEMO OF A GUESSING GAME USING THIEVUL
+"""
 
+test = input()
+print(name2dexNum(test))
 
 pokemonExists = False
 while pokemonExists == False:
@@ -19,12 +22,7 @@ while pokemonExists == False:
 
 
 replit.clear()
-uPKMN = getInfo(uDexNumber)
-
-# remove name
-uPKMN.descriptionX = uPKMN.descriptionX.replace(uPKMN.name,"REDACTED")
-
-uPKMN.descriptionY = uPKMN.descriptionY.replace(uPKMN.name,"REDACTED")
+uPKMN = getInfo(uDexNumber,True)
 
 # display information
 print(uPKMN)
@@ -35,7 +33,4 @@ while uGuess.capitalize() != uPKMN.name:
   uGuess = input("Who's That Pokemon ? :")
 
 print("Correct!")
-"""
 
-# check all pkmn
-print("\u2588")
